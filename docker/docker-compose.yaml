@@ -1,0 +1,21 @@
+version: '3'
+services:
+    php:
+        build: php-fpm
+        #command: ["php-fpm", "--allow-to-run-as-root", "-d" ]
+        ports:
+            - '9000:9000'
+        volumes:
+            - ../:/var/www/symfony:cached
+            - ./logs/symfony:/var/www/symfony/var/logs:cached
+    nginx:
+        build: nginx
+        ports:
+            - '8080:80'
+        links:
+            - php
+        volumes_from:
+            - php
+        volumes:
+            - ./logs/nginx/:/var/log/nginx:cached
+    

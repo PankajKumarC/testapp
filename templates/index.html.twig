@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+<div class="header">
+      <h2>Continent List</h2>
+    </div>
+<table style="width:100%">
+  {% for continent_id in continent_id %}
+  <tr>
+    <td>{{ continent_id.continent_id }}</td>
+    <td>{{ continent_id.name }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
